@@ -5,14 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 3</title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
+
     <h1 class="responsive-svg-container" style="text-align:center">
-        193.187 Information Visualization <br></h1>
+        193.187 Information Visualization <br>
+    </h1>
     <h3 style="text-align:center">
-        Individual Assignment 3 - D3 Implementation: UK Road Safety (Collisions Dataset)
+        Individual Assignment 3 - D3 Implementation: UK Road Safety (Collision Dataset)
     </h3>
     <br>
     <h3 style="text-align:center">
@@ -20,11 +23,198 @@
     </h3>
     <br>
 
+    <!-- Button Demo -->
+    <section class="button-demo responsive-svg-container" aria-labelledby="buttons-heading">
+        <h2 id="buttons-heading" style="text-align:center">Useful Links</h2>
+        <div class="buttons">
+            <button class="btn btn--primary" aria-label="View Code on GitHub">
+                <a href="https://github.com/kashirhasnain/Assignment3_D3_Implementation/">View Code</a>
+            </button>
+            <button class="btn btn--secondary" aria-label="Access Dataset">
+                <a href="https://www.gov.uk/government/statistics/road-safety-data/">Access Dataset</a>
+            </button>
+        </div>
+    </section>
+    <br><br>
+
+    <!-- Tabs Section -->
+    <section class="horizontal-tabs responsive-svg-container" aria-labelledby="htabs-heading">
+        <h2 id="htabs-heading" style="text-align:center"></h2>
+        <div class="ht-wrap">
+            <div class="tab-list" role="tablist" aria-label="Main tabs" aria-orientation="horizontal">
+                <button id="tab-1" class="tab" role="tab" aria-selected="true" aria-controls="panel-1" tabindex="0">
+                    Project Introduction
+                </button>
+                <button id="tab-2" class="tab" role="tab" aria-selected="false" aria-controls="panel-2" tabindex="-1">
+                    Data Variables
+                </button>
+                <button id="tab-3" class="tab" role="tab" aria-selected="false" aria-controls="panel-3" tabindex="-1">
+                    Type of Visualization
+                </button>
+                <button id="tab-4" class="tab" role="tab" aria-selected="false" aria-controls="panel-4" tabindex="-1">
+                    Dataset Clean & Questionnaire
+                </button>
+                <button id="tab-5" class="tab" role="tab" aria-selected="false" aria-controls="panel-5" tabindex="-1">
+                    D3 Implemented Charts
+                </button>
+                <button id="tab-6" class="tab" role="tab" aria-selected="false" aria-controls="panel-6" tabindex="-1">
+                    References
+                </button>
+            </div>
+
+            <div class="tab-panels">
+                <div id="panel-1" class="tab-panel" role="tabpanel" aria-labelledby="tab-1" aria-hidden="false">
+                    <h3>Project Introduction</h3>
+                    <ul>
+                        <li><strong>Project name:</strong> UK Road Safety</li>
+                        <li><strong>What it is:</strong> An interactive visualisation to help analysts and the public
+                            explore where, when, and to whom serious road injuries (KSI) occured in the UK.</li>
+                        <li><strong>Main focus:</strong> Risks analysed by road type, location, time, and vulnerable
+                            road users.</li>
+                        <li><strong>Data sources:</strong> Department for Transport open dataset (2024 release).</li>
+
+                    </ul>
+                </div>
+
+                <div id="panel-2" class="tab-panel" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true">
+                    <h3>Data Variables</h3>
+                    <p><strong>Key variables from Collision Dataset for Visualization:</strong></p>
+                    <ul>
+                        <li><strong>Geographic:</strong> longitude, latitude (for scatter map)</li>
+                        <li><strong>Temporal:</strong> day_of_week, time, collision_year (for heatmap)</li>
+                        <li><strong>Severity:</strong> collision_severity, number_of_casualties, number_of_vehicles</li>
+                        <li><strong>Conditions:</strong> weather_conditions, light_conditions, road_surface_conditions
+                        </li>
+                        <li><strong>Location:</strong> local_authority_district, urban_or_rural_area</li>
+                        <li><strong>Road:</strong> first_road_class, road_type, speed_limit</li>
+                    </ul>
+                </div>
+
+                <div id="panel-3" class="tab-panel" role="tabpanel" aria-labelledby="tab-3" aria-hidden="true">
+                    <h3>Type of Visualization</h3>
+                    <p><strong>Two complementary D3 visualizations:</strong></p>
+                    <ul>
+                        <li><strong>Scatter Map:</strong> Geographic distribution of collisions (longitude × latitude)
+                            with color encoding for severity and bubble size for casualties</li>
+                        <li><strong>Heatmap:</strong> Temporal patterns showing collision frequency by day of week and
+                            hour of day</li>
+                        <li><strong>Interactive Features:</strong> Tooltips on hover, zooming, filtering by severity and
+                            conditions</li>
+                        <li><strong>Visual Encoding:</strong> Color represents severity levels, position represents
+                            geographic/temporal data, size represents casualty count</li>
+                    </ul>
+                </div>
+
+                <div id="panel-4" class="tab-panel" role="tabpanel" aria-labelledby="tab-4" aria-hidden="true">
+                    <h3>Dataset Cleaning & Questionnaire</h3>
+                    <p><strong>Data Quality Actions:</strong></p>
+                    <ul>
+                        <li>✓ Removed rows with missing longitude/latitude values</li>
+                        <li>✓ Validated day_of_week contains valid weekday names</li>
+                        <li>✓ Parsed time field to extract hours (0-23)</li>
+                        <li>✓ Verified collision_year ranges from 2020-2024</li>
+                        <li>✓ Handled missing weather/light conditions with "Unknown" category</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Complex Questions Answered:</strong></p>
+                    <ul>
+                        <li>CQ1: Geographic hotspot identification - Which areas have highest collision density?</li>
+                        <li>CQ2: Temporal patterns - When do collisions peak (day/hour)?</li>
+                        <li>CQ3: Severity correlations - Which conditions produce more serious collisions?</li>
+                        <li>CQ4: Geographic trends - Are hotspots changing over time?</li>
+                        <li>CQ5: Multi-dimensional analysis - How do casualties vary by location and time?</li>
+                    </ul>
+                </div>
+
+                <div id="panel-5" class="tab-panel" role="tabpanel" aria-labelledby="tab-5" aria-hidden="true">
+                    <h3>D3 Implemented Charts</h3>
+                    <p><strong>Visualization Components:</strong></p>
+                    <ul>
+                        <li><strong>Scatter Map:</strong> Plot showing collision locations with interactive tooltips
+                            displaying address, severity, time, and vehicle count</li>
+                        <li><strong>Heatmap:</strong> Grid showing collision intensity across day × hour combinations
+                            with color gradient from green (safe) to red (dangerous)</li>
+                        <li><strong>Animations:</strong> Smooth transitions when filtering data, fade-in effects for new
+                            data points</li>
+                        <li><strong>Interactions:</strong> Hover tooltips, click to filter by severity, zoom and pan on
+                            scatter map</li>
+                        <li><strong>Responsive Design:</strong> Visualizations adapt to different screen sizes</li>
+                    </ul>
+                </div>
+
+                <div id="panel-6" class="tab-panel" role="tabpanel" aria-labelledby="tab-6" aria-hidden="true">
+                    <h3>References</h3>
+                    <ul>
+                        <li><strong>Data Source:</strong> UK Department for Transport - Road Safety Statistics
+                            (https://www.gov.uk/government/statistics/road-safety-data/)</li>
+                        <li><strong>D3.js Library:</strong> https://d3js.org/</li>
+                        <li><strong>Tutorial Reference:</strong> D3 Documentation and Examples
+                            (https://d3-graph-gallery.com/)</li>
+                        <li><strong>OpenStreetMap:</strong> Geographic coordinate system reference</li>
+                        <li><strong>Assignment Guidelines:</strong> TU Wien Information Visualization Course (193.187)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br><br>
     <div id="bar" class="responsive-svg-container"></div>
     <div id="line" class="responsive-svg-container"></div>
 
-    <script src="./d3.js"></script>
-    <script src="./script.js"></script>
+    <script>
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('[role="tab"]');
+        const panels = document.querySelectorAll('[role="tabpanel"]');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetPanel = tab.getAttribute('aria-controls');
+
+                // Remove active state from all tabs
+                tabs.forEach(t => {
+                    t.setAttribute('aria-selected', 'false');
+                    t.setAttribute('tabindex', '-1');
+                });
+
+                // Hide all panels
+                panels.forEach(p => {
+                    p.setAttribute('aria-hidden', 'true');
+                });
+
+                // Set clicked tab as active
+                tab.setAttribute('aria-selected', 'true');
+                tab.setAttribute('tabindex', '0');
+
+                // Show corresponding panel
+                document.getElementById(targetPanel).setAttribute('aria-hidden', 'false');
+            });
+
+            // Keyboard navigation
+            tab.addEventListener('keydown', (e) => {
+                let index = Array.from(tabs).indexOf(tab);
+                let newIndex = index;
+
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    newIndex = (index + 1) % tabs.length;
+                    e.preventDefault();
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    newIndex = (index - 1 + tabs.length) % tabs.length;
+                    e.preventDefault();
+                } else if (e.key === 'Home') {
+                    newIndex = 0;
+                    e.preventDefault();
+                } else if (e.key === 'End') {
+                    newIndex = tabs.length - 1;
+                    e.preventDefault();
+                }
+
+                tabs[newIndex].focus();
+                tabs[newIndex].click();
+            });
+        });
+    </script>
+
 </body>
 
 </html>

@@ -89,19 +89,24 @@
 
 dataset['hour'] = pd.to_datetime(dataset['time'], format='%H:%M').dt.hour</code></b></li>
                         <li>✓ Replaced all the locations Codes with Cities Name by adding Column City and map with it<b>
-                            <p>dataset['City'] = dataset['local_authority_highway'].replace({<br>
-    'Hartlepool': 'Hartlepool',<br>
-    'E06000001': 'Hartlepool',<br>
-    'E06000002': 'Middlesbrough'})</p></b>
+                                <p>dataset['City'] = dataset['local_authority_highway'].replace({<br>
+                                    'Hartlepool': 'Hartlepool',<br>
+                                    'E06000001': 'Hartlepool',<br>
+                                    'E06000002': 'Middlesbrough'})</p>
+                            </b>
                         </li>
 
 
                     </ul>
                     <p style="margin-top: 15px;color: red;"><strong>Questionnaire</strong></p>
                     <ul>
-                        <li><b style="color: blue;">HeatMap Visualization Questionnaire:</b> Identify which cities (Wandsworth, Enfield, Croydon, Redcar and Cleveland, Lambeth, Hartlepool,Hackney and Newham) have the most collisions during the rush hours. </li>
-                        <li><b style="color: blue;">ScatterMap Visualization Questionnaire:</b> What is the geographic distribution of collisions across different cities during peak hours, and how do severity levels and casualty counts vary by location?</li>
-                       
+                        <li><b style="color: blue;">HeatMap Visualization Questionnaire:</b> Identify which cities
+                            (Wandsworth, Enfield, Croydon, Redcar and Cleveland, Lambeth, Hartlepool,Hackney and Newham)
+                            have the most collisions during the rush hours. </li>
+                        <li><b style="color: blue;">ScatterMap Visualization Questionnaire:</b> What is the geographic
+                            distribution of collisions across different cities during peak hours, and how do severity
+                            levels and casualty counts vary by location?</li>
+
                     </ul>
 
                     <!-- CSV Viewer -->
@@ -117,7 +122,7 @@ dataset['hour'] = pd.to_datetime(dataset['time'], format='%H:%M').dt.hour</code>
                         <li><strong>local_authority_district/city:</strong> for cities abstraction</li>
                         <li><strong>Severity:</strong> collision_severity</li>
                         <li><strong>Number of Collisions:</strong> count of records per city per hour
-                        
+
 
                         </li>
                         <br> <br> <br> <br>
@@ -147,8 +152,11 @@ dataset['hour'] = pd.to_datetime(dataset['time'], format='%H:%M').dt.hour</code>
                 <div id="panel-5" class="tab-panel" role="tabpanel" aria-labelledby="tab-5" aria-hidden="true">
                     <h3>D3 Implemented Charts</h3>
                     <p><strong>Heatmap:</strong></p>
-                    <script src="heatmap.js"></script>
-                </div>
+                    <div id="heatmap">
+                        <script src="https://d3js.org/d3.v7.min.js"></script>
+                        <script src="./heatmap.js"></script></div>
+                    </div>
+                
 
                 <div id="panel-6" class="tab-panel" role="tabpanel" aria-labelledby="tab-6" aria-hidden="true">
                     <h3>References</h3>
@@ -168,8 +176,7 @@ dataset['hour'] = pd.to_datetime(dataset['time'], format='%H:%M').dt.hour</code>
     </section>
 
     <br><br>
-    <div id="bar" class="responsive-svg-container"></div>
-    <div id="line" class="responsive-svg-container"></div>
+    
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="script.js"></script>
 

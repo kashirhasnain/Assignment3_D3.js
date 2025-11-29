@@ -13,22 +13,82 @@ body {
 h1,
 h3 {
 
-/* CSV viewer styles */
-.csv-viewer{ border:1px dashed rgba(0,0,0,0.06); padding:12px; border-radius:8px; background:#fcfcff; }
-.csv-viewer h4{ margin:0 0 8px 0; }
-.csv-controls{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
-.csv-controls select{ padding:6px 8px; border-radius:6px; border:1px solid rgba(0,0,0,0.08); }
-.csv-output{ max-height:360px; overflow:auto; background:#fff; border-radius:6px; padding:8px; border:1px solid rgba(0,0,0,0.04); }
-.csv-output table{ border-collapse:collapse; width:100%; font-size:0.95rem; }
-.csv-output th, .csv-output td{ border:1px solid rgba(0,0,0,0.04); padding:6px 8px; text-align:left; }
-.csv-output thead th{ position:sticky; top:0; background:linear-gradient(180deg, #fafafa, #fff); z-index:2; }
-.csv-output pre{ white-space:pre; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace; font-size:0.86rem; margin:0; }
-.csv-output .muted{ color:rgba(0,0,0,0.5); }
+  /* CSV viewer styles */
+  .csv-viewer {
+    border: 1px dashed rgba(0, 0, 0, 0.06);
+    padding: 12px;
+    border-radius: 8px;
+    background: #fcfcff;
+  }
 
-@media (max-width:640px){
-  .csv-controls{ gap:8px; }
-  .csv-output{ max-height:260px; }
-}
+  .csv-viewer h4 {
+    margin: 0 0 8px 0;
+  }
+
+  .csv-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+
+  .csv-controls select {
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .csv-output {
+    max-height: 360px;
+    overflow: auto;
+    background: #fff;
+    border-radius: 6px;
+    padding: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .csv-output table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .csv-output th,
+  .csv-output td {
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    padding: 6px 8px;
+    text-align: left;
+  }
+
+  .csv-output thead th {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(180deg, #fafafa, #fff);
+    z-index: 2;
+  }
+
+  .csv-output pre {
+    white-space: pre;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+    font-size: 0.86rem;
+    margin: 0;
+  }
+
+  .csv-output .muted {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  @media (max-width:640px) {
+    .csv-controls {
+      gap: 8px;
+    }
+
+    .csv-output {
+      max-height: 260px;
+    }
+  }
+
   margin: 15px 0;
 }
 
@@ -206,4 +266,16 @@ h3 {
   .tab-panel ul {
     font-size: 14px;
   }
+}
+
+#heatmap {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
 }

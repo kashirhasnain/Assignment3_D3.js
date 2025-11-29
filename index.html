@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 3</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 
 </head>
 
@@ -46,14 +48,12 @@
                     Project Introduction
                 </button>
                 <button id="tab-2" class="tab" role="tab" aria-selected="false" aria-controls="panel-2" tabindex="-1">
-                    Data Variables
+                    Dataset Cleaning & Questionnaire
                 </button>
                 <button id="tab-3" class="tab" role="tab" aria-selected="false" aria-controls="panel-3" tabindex="-1">
-                    Type of Visualization
+                    Data Variables and Visualization Types
                 </button>
-                <button id="tab-4" class="tab" role="tab" aria-selected="false" aria-controls="panel-4" tabindex="-1">
-                    Dataset Clean & Questionnaire
-                </button>
+
                 <button id="tab-5" class="tab" role="tab" aria-selected="false" aria-controls="panel-5" tabindex="-1">
                     D3 Implemented Charts
                 </button>
@@ -75,19 +75,52 @@
 
                     </ul>
                 </div>
-
                 <div id="panel-2" class="tab-panel" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true">
-                    <h3>Data Variables</h3>
+                    <h3>Dataset Cleaning & Questionnaire</h3>
+                    <p style="color: red;"><strong>Collision DataSet:</strong></p>
+                    <ul>
+                        <li>Total columns: 44 </li>
+                        <li>Total rows: 10k+ </li>
+                        <p style="color: red;"><strong>Data Cleanup:</strong></p>
+                        <li>✓ Removed rows with missing longitude/latitude values</li>
+                        <li>✓ Removed Unnecessary columns</li>
+                        <li>✓ Parsed time field to extract hours (0-23) by adding the hour column using this<br><b>
+                                <code>import pandas as pd<br>
+
+dataset['hour'] = pd.to_datetime(dataset['time'], format='%H:%M').dt.hour</code></b></li>
+                        <li>✓ Replaced all the locations Codes with Cities Name by adding Column City and map with it<b>
+                            <p>dataset['City'] = dataset['local_authority_highway'].replace({<br>
+    'Hartlepool': 'Hartlepool',<br>
+    'E06000001': 'Hartlepool',<br>
+    'E06000002': 'Middlesbrough'})</p></b>
+                        </li>
+
+
+                    </ul>
+                    <p style="margin-top: 15px;color: red;"><strong>Questionnaire</strong></p>
+                    <ul>
+                        <li><b style="color: blue;">HeatMap Visualization Questionnaire:</b> Identify which cities (Wandsworth, Enfield, Croydon, Redcar and Cleveland, Lambeth, Hartlepool,Hackney and Newham) have the most collisions during the rush hours. </li>
+                        <li><b style="color: blue;">ScatterMap Visualization Questionnaire:</b> What is the geographic distribution of collisions across different cities during peak hours, and how do severity levels and casualty counts vary by location?</li>
+                       
+                    </ul>
+
+                    <!-- CSV Viewer -->
+
+                </div>
+                <div id="panel-3" class="tab-panel" role="tabpanel" aria-labelledby="tab-3" aria-hidden="true">
+                    <h3>Data Variables and Type of Visualization</h3>
 
                     <p style="color: red;"><strong>Key variables from Collision Dataset for HEATMAP
                             Visualization:</strong></p>
                     <ul>
                         <li><strong>time:</strong> peak hour extraction</li>
-                        <li><strong>local_authority_district:</strong> for cities abstraction</li>
+                        <li><strong>local_authority_district/city:</strong> for cities abstraction</li>
                         <li><strong>Severity:</strong> collision_severity</li>
-                        <li><strong>Filter By:</strong> day_of_week, collision_year</li>
+                        <li><strong>Number of Collisions:</strong> count of records per city per hour
+                        
 
                         </li>
+                        <br> <br> <br> <br>
                     </ul>
                     <p style="color: BLUE;"><strong>Key variables from Collision Dataset for SCATTER MAP
                             Visualization:</strong></p>
@@ -101,71 +134,20 @@
                                 <li>number_of_vehicles(opacity)</li>
                             </ol>
                         </li>
-                        
+
 
                     </ul>
 
                 </div>
 
-                <div id="panel-3" class="tab-panel" role="tabpanel" aria-labelledby="tab-3" aria-hidden="true">
-                    <h3>Type of Visualization</h3>
-                    <p><strong>Two complementary D3 visualizations:</strong></p>
-                    <ul>
-                        <li><strong>Scatter Map:</strong> Geographic distribution of collisions (longitude × latitude)
-                            with color encoding for severity and bubble size for casualties</li>
-                        <li><strong>Heatmap:</strong> Temporal patterns showing collision frequency by day of week and
-                            hour of day</li>
-                        <li><strong>Interactive Features:</strong> Tooltips on hover, zooming, filtering by severity and
-                            conditions</li>
-                        <li><strong>Visual Encoding:</strong> Color represents severity levels, position represents
-                            geographic/temporal data, size represents casualty count</li>
-                    </ul>
-                </div>
 
-                <div id="panel-4" class="tab-panel" role="tabpanel" aria-labelledby="tab-4" aria-hidden="true">
-                    <h3>Dataset Cleaning & Questionnaire</h3>
-                    <p><strong>Data Quality Actions:</strong></p>
-                    <ul>
-                        <li>✓ Removed rows with missing longitude/latitude values</li>
-                        <li>✓ Validated day_of_week contains valid weekday names</li>
-                        <li>✓ Parsed time field to extract hours (0-23)</li>
-                        <li>✓ Verified collision_year ranges from 2020-2024</li>
-                        <li>✓ Handled missing weather/light conditions with "Unknown" category</li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>Complex Questions Answered:</strong></p>
-                    <ul>
-                        <li>CQ1: Geographic hotspot identification - Which areas have highest collision density?</li>
-                        <li>CQ2: Temporal patterns - When do collisions peak (day/hour)?</li>
-                        <li>CQ3: Severity correlations - Which conditions produce more serious collisions?</li>
-                        <li>CQ4: Geographic trends - Are hotspots changing over time?</li>
-                        <li>CQ5: Multi-dimensional analysis - How do casualties vary by location and time?</li>
-                    </ul>
 
-                    <!-- CSV Viewer -->
-                    <div class="csv-viewer" style="margin-top:18px;">
-                        <h4>View Raw CSV Files</h4>
-                        <div class="csv-controls">
-                            <label for="csv-select">Choose file:</label>
-                            <select id="csv-select">
-                                <option value="Data/collisions_2024.csv">collisions_2024.csv</option>
-                                <option value="Data/casualties_2024.csv">casualties_2024.csv</option>
-                                <option value="Data/vehicles_2024.csv">vehicles_2024.csv</option>
-                            </select>
-                            <button id="load-csv" class="btn btn--secondary">Load CSV</button>
-                            <label style="margin-left:12px"><input type="checkbox" id="show-raw" checked> Show raw
-                                text</label>
-                        </div>
 
-                        <div id="csv-output" class="csv-output" aria-live="polite">
-                            <p class="muted">No file loaded. Choose a CSV and click "Load CSV".</p>
-                        </div>
-                    </div>
-                </div>
 
                 <div id="panel-5" class="tab-panel" role="tabpanel" aria-labelledby="tab-5" aria-hidden="true">
                     <h3>D3 Implemented Charts</h3>
                     <p><strong>Heatmap:</strong></p>
-                    <div id="heatmap" class="responsive-svg-container"></div>
+                    <script src="heatmap.js"></script>
                 </div>
 
                 <div id="panel-6" class="tab-panel" role="tabpanel" aria-labelledby="tab-6" aria-hidden="true">

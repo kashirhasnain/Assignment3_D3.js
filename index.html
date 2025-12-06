@@ -77,12 +77,22 @@
                 </div>
                 <div id="panel-2" class="tab-panel" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true">
                     <h3>Dataset Cleaning & Questionnaire</h3>
+                    <p style="margin-top: 15px;color: red;"><strong>Questionnaire</strong></p>
+                    <ul>
+                        <li><b style="color: blue;">HeatMap Visualization Questionnaire:</b> Identify which cities
+                            (Wandsworth, Enfield, Croydon, Redcar and Cleveland, Lambeth, Hartlepool,Hackney and Newham)
+                            have the most collisions during the rush hours. </li>
+
+
+                    </ul>
+                    <br><br><br>
                     <p style="color: red;"><strong>Collision DataSet:</strong></p>
                     <ul>
                         <li>Total columns: 44 </li>
                         <li>Total rows: 10k+ </li>
-                        <p style="color: red;"><strong>Data Cleanup:</strong></p>
-                        <li>✓ Removed rows with missing longitude/latitude values</li>
+                        <p style="color: red;"><strong>Data Cleanup:</strong> Used Power BI and pandas library (PowerBI
+                            Source file attached)</p>
+
                         <li>✓ Removed Unnecessary columns</li>
                         <li>✓ Parsed time field to extract hours (0-23) by adding the hour column using this<br><b>
                                 <code>import pandas as pd<br>
@@ -98,26 +108,34 @@ dataset['hour'] = pd.to_datetime(dataset['time'], format='%H:%M').dt.hour</code>
                                     'E06000002': 'Middlesbrough'})</p>
                             </b>
                         </li>
+                        <li>Extracting Months from date Columns<p>
+                                <b>if (d.date) {<br>
+                                    const parts = d.date.split("/");<br>
+                                    if (parts.length >= 2) {<br>
+                                    const monthNum = parseInt(parts[1]);<br>
+                                    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
+                                    "Oct", "Nov", "Dec"];<br>
+                                    if (monthNum >= 1 && monthNum <= 12) {<br>
+                                        month = monthNames[monthNum - 1];<br>
+                                        }
+                                        }
+                                        }<br></b>
+                            </p>
+                        </li>
 
 
                     </ul>
-                    <p style="margin-top: 15px;color: red;"><strong>Questionnaire</strong></p>
-                    <ul>
-                        <li><b style="color: blue;">HeatMap Visualization Questionnaire:</b> Identify which cities
-                            (Wandsworth, Enfield, Croydon, Redcar and Cleveland, Lambeth, Hartlepool,Hackney and Newham)
-                            have the most collisions during the rush hours. </li>
 
 
-                    </ul>
 
-                    <!-- CSV Viewer -->
 
                 </div>
                 <div id="panel-3" class="tab-panel" role="tabpanel" aria-labelledby="tab-3" aria-hidden="true">
                     <h3>Data Variables and Type of Visualization</h3>
 
                     <p style="color: red;"><strong>Key variables from Collision Dataset for HEATMAP
-                            Visualization:</strong></p>
+                            Visualization:</strong></p> Comparing Collision frequency during peak hours across different
+                    cities.
                     <ul>
                         <li><strong>time:</strong> peak hour extraction</li>
                         <li><strong>local_authority_district/city:</strong> for cities abstraction</li>
@@ -128,12 +146,63 @@ dataset['hour'] = pd.to_datetime(dataset['time'], format='%H:%M').dt.hour</code>
                         </li>
 
 
-                        <br> <br> <br> <br>
+                        <br> <br>
+                    </ul>
+                    <p style="color: red;"><strong>Visual Elements</strong></p>
+                    <ul>
+                        <li><strong>Shape</strong> Rectangle</li>
+                        <li><strong>Labels:</strong> Numeric Labels inside Cell</li>
+                        <li><strong>xAxis Label:</strong> Peak Hour Time</li>
+                        <li><strong>Y Axis Label:</strong>Top 10 Cities
+
+
+                        </li>
+
+
+                        <br> <br>
+                    </ul>
+                    <p style="color: red;"><strong>Color Coding</strong></p>
+                    <ul>
+                        <li><strong>Red</strong> Highest Collisions</li>
+                        <li><strong>Orange:</strong> Middle Collisions</li>
+                        <li><strong>Yellow:</strong> Lowest Collisions</li>
+
+
+
+                        </li>
+
+
+                        <br> <br>
+                    </ul>
+                    <p style="color: red;"><strong>Positions</strong></p>
+                    <ul>
+                        <li><strong>xAxis</strong> 7, 8, 9, 17,18,19</li>
+                        <li><strong>YAxis:</strong> Cities</li>
+
+
+
+
+                        </li>
+
+
+                        <br> <br>
+                    </ul>
+                    <p style="color: red;"><strong>Interactions and Animations</strong></p>
+                    <ul>
+                        <li><strong>Hovering Tooltip:</strong>Shows the Time,City, Collisions (Slight, Serious, Fatal)
+                        </li>
+                        <li><strong>Filtering:</strong> Filter by months</li>
+
+
+
+
+                        </li>
+
+
+                        <br> <br>
                     </ul>
 
 
-
-                    </ul>
 
                 </div>
 
@@ -159,9 +228,7 @@ dataset['hour'] = pd.to_datetime(dataset['time'], format='%H:%M').dt.hour</code>
                         <li><strong>D3.js Library:</strong> https://d3js.org/</li>
                         <li><strong>Tutorial Reference:</strong> D3 Documentation and Examples
                             (https://d3-graph-gallery.com/)</li>
-                        <li><strong>OpenStreetMap:</strong> Geographic coordinate system reference</li>
-                        <li><strong>Assignment Guidelines:</strong> TU Wien Information Visualization Course (193.187)
-                        </li>
+
                     </ul>
                 </div>
             </div>
